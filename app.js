@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const blogroutes= require('./routes/blogroutes')
 
 
-dbURI ='mongodb+srv://HHrathod26:HHrathod26@cluster0.twsuwwr.mongodb.net/blogs?retryWrites=true&w=majority&appName=Cluster0'
+dbURI =''
 
 mongoose.connect(dbURI).then((result)=>{console.log("connected to DB")}).catch((err)=>{console.log(err)})
 
