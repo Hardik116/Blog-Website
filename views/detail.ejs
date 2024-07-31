@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('./partials/style')%>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+
+    <title>BLOGESH</title>
+</head>
+<body>
+    <%- include('./partials/head')%>
+
+    <div class="details content">
+        <h2><%= blog.title %></h2>
+        <div class="content">
+            <p><%= blog.body%></p>
+        </div>
+        <a class="delete" data-doc="<%= blog._id %>">
+            <img src="/image.png" alt="delete icon">
+        </a>
+
+
+    </div>
+
+    <script>
+        const trashcan = document.querySelector('a.delete');
+    
+        trashcan.addEventListener('click', (e) => {
+          const endpoint = `/blogs/${trashcan.dataset.doc}`;
+    
+          fetch(endpoint, {
+            method: 'DELETE',
+          })
+          .then(response => response.json())
+          .then(data => window.location.href = data.redirect)
+          .catch(err => console.log(err));
+        });
+        
+      </script>
+</body>
+</html>
